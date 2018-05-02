@@ -1,0 +1,33 @@
+﻿
+
+<!-- Polyfill(s) for older browsers 
+    These are now in webpack vendor bundles
+
+<script src="~/Areas/ng/node_modules/core-js/client/shim.min.js" polyfill></script>
+<script src="~/Areas/ng/node_modules/zone.js/dist/zone.js" polyfill></script>
+<script src="~/Areas/ng/node_modules/reflect-metadata/Reflect.js" polyfill></script>
+-->
+
+<script>
+    //Disable the form from submitting on enter. - this is until we can figure out how to replicate ngSubmit on non-form elements.
+    jQuery(document).ready(function () {
+
+        jQuery('form').on('keyup keypress', function (e) {
+            var keyCode = e.keyCode || e.which;
+            var target = e.target || e.srcElement;
+            //console.log(target);
+            //console.log(target.tagName);
+            if (keyCode === 13 && target.tagName === 'INPUT' && target.type !=='button') {
+                console.log('keypress');
+                return false;
+            }
+        });
+    
+
+    });
+</script>
+
+
+<!-- 3. Display the application -->
+<pass-through-auth-example id="i[x-contentItemKey]">Loading...</pass-through-auth-example>
+
